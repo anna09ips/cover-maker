@@ -226,7 +226,7 @@ async function init(){
   for(let t=1;t<=6;t++){
     const div = document.createElement("div");
     div.className = "tpl" + (t===1?" sel":"");
-    div.innerHTML = "<span class='no'>"+t+"번</span><img src='t"+t+"_p1.jpg' alt='표지 "+t+"번'>";
+    div.innerHTML = "<span class='no'>"+t+"번</span><img src='t"+t+"_p1.jpg?v=2' alt='표지 "+t+"번'>";
     div.onclick = ()=>{
       state.tpl = t;
       document.querySelectorAll(".tpl").forEach(e=>e.classList.remove("sel"));
@@ -237,7 +237,7 @@ async function init(){
   }
   // 이미지 + 폰트 로딩 후 첫 렌더
   const jobs = [];
-  for(let t=1;t<=6;t++){ jobs.push(loadImg("t"+t+"_p1","t"+t+"_p1.jpg")); jobs.push(loadImg("t"+t+"_p2","t"+t+"_p2.jpg")); }
+  for(let t=1;t<=6;t++){ jobs.push(loadImg("t"+t+"_p1","t"+t+"_p1.jpg?v=2")); jobs.push(loadImg("t"+t+"_p2","t"+t+"_p2.jpg?v=2")); }
   const fams = ["Eulyoo1945-SemiBold","Pretendard-SemiBold","Pretendard-Bold","Pretendard-Medium","HakgyoansimRikodeoOTFR","HSHwalkongSerif-Regular","RiaSans-Bold","RiaSans-ExtraBold"];
   fams.forEach(f=>jobs.push(document.fonts.load("20px \""+f+"\"").catch(()=>{})));
   await Promise.all(jobs);
